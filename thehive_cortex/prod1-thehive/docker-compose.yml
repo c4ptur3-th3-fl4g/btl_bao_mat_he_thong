@@ -26,7 +26,6 @@ services:
     memswap_limit: 4G
     networks:
       - thehive-network
-      - wazuh-thehive-net
     healthcheck:
       # Waiting for cqlsh command to succeed to make sure Cassandra is ready
       test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces' || exit 1"]
@@ -73,7 +72,6 @@ services:
     memswap_limit: 4G
     networks:
       - thehive-network
-      - wazuh-thehive-net
     healthcheck:
       test: ["CMD-SHELL", "curl -f -s -u 'elastic:${elasticsearch_password}' http://elasticsearch:9200/_cat/health || exit 1"]
       start_period: 40s
@@ -114,7 +112,6 @@ services:
     memswap_limit: 4G
     networks:
       - thehive-network
-      - wazuh-thehive-net
     ports:
       - '0.0.0.0:9000:9000'
     healthcheck:
@@ -151,7 +148,6 @@ services:
       - '8443:443'
     networks:
       - thehive-network
-      - wazuh-thehive-net
     deploy:
       resources:
         limits:
@@ -170,5 +166,3 @@ services:
 
 networks:
   thehive-network:
-  wazuh-thehive-net:
-    external: true
