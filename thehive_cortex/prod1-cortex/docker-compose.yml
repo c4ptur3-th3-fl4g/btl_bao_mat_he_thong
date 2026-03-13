@@ -67,7 +67,8 @@ services:
       - ./cortex/config:/etc/cortex:ro
       - ./cortex/logs:/var/log/cortex
       - ./cortex/neurons:/opt/cortexneurons
-    
+    ports:
+      - '9001:9001'
     deploy:
       resources:
         limits:
